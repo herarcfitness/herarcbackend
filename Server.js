@@ -21,6 +21,17 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://herarccoach.vercel.app' // allow local dev and frontend 
+];
+
+app.use(cors({
+  origin: allowedOrigins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
 app.use(cors());
 app.use(express.json());
 
