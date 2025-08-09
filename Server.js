@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const stripeRoutes = require('./routes/stripe');
 
 //Stripe webhook setup//
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -66,6 +67,7 @@ app.post('/webhook', bodyParser.raw({ type: 'application/json' }), (req, res) =>
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', stripeRoutes);
 
 const Client = require('./Models/Client');
 
