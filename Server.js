@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const stripeRoutes = require('./routes/stripe');
+const stripeRoutes = require('./Routes/stripe');
 
 //Stripe webhook setup//
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -19,7 +19,7 @@ const connectDB = async () => {
   }
 };
 
-// Connect to MongoDB
+// Connect to MongoDB, adding changes
 connectDB();
 
 const express = require('express');
